@@ -1,0 +1,14 @@
+.dropdown, .dropdownBulk {
+    position: relative;
+}
+.dropdown [data-role='input'] {
+    border: 1px solid #bfbfbf;
+}
+.dropdownBulk [data-role='input'] {
+    border: none;
+}
+.dropdown:hover [data-role='tooltip'], 
+.dropdownBulk:hover [data-role='tooltip'] {
+    display: block;
+  }
+  

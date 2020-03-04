@@ -1,0 +1,57 @@
+$font_color: #62738d;
+$placeholder: lighten(#62738d,20);
+$disabled_color: #eee;
+$border_color: #cfd7e6;
+$background: #fff;
+$background_hover: #3e96ed;
+$font_size: 13px;
+$border_radius: 2px;
+$height: 29px;
+
+.container {
+    overflow: hidden;
+    width: 100%;
+    background: transparent;
+    margin: 0;
+}
+.label {
+    font-weight: 400;
+    color: $font_color;
+    font-size: $font_size;
+    margin: 0 0 4px 0;
+  }
+  .textContainer {
+    display: flex;
+    align-items: stretch;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: $border_radius;
+    border: 1px solid $border_color;
+    min-height: $height;
+  }
+  .textFocus {
+    border: 1px solid lighten($background_hover,15%);
+  }
+  .textDisabled {
+    background: $disabled_color;
+  }
+  .textBulk {
+    border: none;
+    border-radius: 0;
+  }
+  .textarea {
+    background: transparent;
+    cursor: text;
+    border: none;
+    padding: 5px;
+    flex-grow: 1;
+    outline: none;
+    color: $font_color;
+    font-size: $font_size;
+    align-self: stretch;
+    min-height: 40px;
+  }
+  .textarea::placeholder {
+    font-weight: 300;
+    color: $placeholder;
+  }

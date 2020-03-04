@@ -1,0 +1,113 @@
+// --------- Color Pallete --------- //
+
+$color_1: #444;
+$color_2: #8e8e8e;
+$color_3: #bfbfbf;
+$color_4: #f5f5f5;
+$color_5: #fff;
+$color_6: #f9f9f9;
+$color_7: #2e3440;
+
+$color_20: #428bca;
+$color_21: #e1edf7;
+$color_22: #364059;
+$color_23: #2e3440;
+$color_24: #3b4253;
+$color_25: darken(#8989ba, 35%);
+
+// --------- Theme --------- //
+
+$font_size_1: 13px;
+$font_size_2: 12px;
+
+$border_radius_1: 2px;
+$border_radius_2: 3px;
+
+$height_1: 28px;
+
+$box_shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+
+// --------- Inputs --------- //
+
+$input_font: $color_22;
+$input_placeholder: $color_2;
+$input_disabled: $color_4;
+$input_hover: $color_22;
+$input_border: $color_3;
+$input_background: $color_21;
+
+$input_font_size: $font_size_1;
+$input_border_radius: $border_radius_1;
+$input_height: $height_1;
+
+// --------- Selects --------- //
+
+$select_font: $color_1;
+$select_background: $color_5;
+$select_border: $color_3;
+$select_hover: $color_21;
+$select_font_size: $font_size_1;
+$select_border_radius: $border_radius_1;
+$Select_height: $height_1;
+
+// --------- Tooltip --------- //
+
+$tooltip_background: $color_7;
+$tooltip_font: $color_5;
+
+$tooltip_border_radius: $border_radius_2;
+$tooltip_font_size: $font_size_2;
+
+// --------- Checkbox --------- //
+
+$checkbox_height: $height_1;
+$checkbox_color: $color_20;
+
+// --------- Textarea --------- //
+
+$textarea_font: $color_1;
+$textarea_placeholder: $color_2;
+$textarea_disabled: $color_4;
+$textarea_border: $color_3;
+$textarea_background: $color_21;
+$textarea_hover: $color_20;
+$textarea_font_size: $font_size_1;
+$textarea_border_radius: $border_radius_1;
+$textarea_height: $height_1;
+
+// --------- Buttons --------- //
+
+$button_primary_font: $color_5;
+$button_primary_color: $color_25;
+
+$button_secondary_font: $color_5;
+$button_secondary_color: #8591e8;
+
+$button_border_radius: $border_radius_2;
+$button_font: $font_size_1;
+
+// --------- Table --------- //
+
+$table_border: $color_24;
+$table_header_background: $color_23;
+$table_background: $color_23;
+$table_hover: darken($color_23, 5%);
+$table_font: $color_5;
+$table_header_hover: $color_20;
+
+$table_font_size: $font_size_1;
+
+// --------- Snackbar --------- //
+
+$snackbar_font: $color_5;
+$snackbar_color: $color_7;
+$snackbar_hover_color: darken($color_5, 10%);
+
+$snackbar_font_size: $font_size_1;
+$snackbar_border_radius: $border_radius_2;
+
+// --------- Modal --------- //
+
+$modal_font: $color_1;
+$modal_background: $color_5;
+$modal_close: $color_20;

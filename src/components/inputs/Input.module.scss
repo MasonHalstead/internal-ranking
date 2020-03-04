@@ -1,0 +1,237 @@
+$font_color: #444;
+$font_color_hover: #707ee4;
+$placeholder: lighten(#444, 20);
+$disabled_color: #eeeeee;
+$border: #cfd7e6;
+$background: #fff;
+$font_size: 13px;
+$border_radius: 2px;
+$height: 29px;
+
+.container {
+  overflow: hidden;
+  background: transparent;
+  flex-grow: 1;
+  margin: 0;
+}
+.inputMultiContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 2px 0;
+  align-items: center;
+}
+.inputListContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+  .badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    border-radius: 10px;
+    height: 16px;
+    width: 16px;
+    font-size: 11px;
+    background: $background;
+    border: 1px solid lighten($font_color_hover, 15%);
+    color: $font_color_hover;
+  }
+  .placeholder {
+    color: $placeholder;
+  }
+  p {
+    margin: 0;
+    margin-left: 5px;
+  }
+}
+.label {
+  font-weight: 400;
+  color: $font_color;
+  font-size: $font_size;
+  margin: 0 0 4px 0;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: stretch;
+  cursor: pointer;
+  justify-content: center;
+  border-radius: $border_radius;
+  border: 1px solid $border;
+  min-height: $height;
+}
+.inputContainer:hover .leftIcon,
+.inputContainer:hover .inputIcon,
+.inputContainer:hover .rightIcon {
+  color: $font_color_hover;
+}
+.inputIcon {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 5px;
+  flex-grow: 1;
+  color: #818fa3;
+  .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    height: 16px;
+    width: 16px;
+    font-size: 11px;
+    background: $background;
+    border: 1px solid lighten($font_color_hover, 15%);
+    color: $font_color_hover;
+  }
+}
+.inputIconList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 5px;
+  flex-grow: 1;
+  .badge {
+    position: absolute;
+    top: -7px;
+    left: -11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    border-radius: 10px;
+    height: 16px;
+    width: 16px;
+    font-size: 11px;
+    background: $background;
+    border: 1px solid lighten($font_color_hover, 15%);
+    color: $font_color_hover;
+  }
+}
+.inputFake {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  padding: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+  flex-grow: 1;
+  p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    white-space: nowrap;
+    width: 100%;
+    color: $font_color;
+    font-size: $font_size;
+    margin: 0;
+  }
+  .placeholder {
+    color: $placeholder;
+  }
+}
+.inputFocus {
+  border: 1px solid lighten($font_color_hover, 15%);
+}
+.inputDisabled {
+  background: $disabled_color;
+}
+.inputBulk {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+}
+.input {
+  background: transparent;
+  cursor: text;
+  border: none;
+  padding: 0 5px;
+  flex-grow: 1;
+  outline: none;
+  width: 100%;
+  color: $font_color;
+  font-size: $font_size;
+  min-height: $height - 4;
+  align-self: stretch;
+}
+.input[type='number']::-webkit-inner-spin-button,
+.input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input::placeholder {
+  font-weight: 300;
+  color: $placeholder;
+}
+.leftIcon {
+  padding-left: 5px;
+  border-top-left-radius: $border_radius;
+  border-bottom-left-radius: $border_radius;
+  :hover {
+    color: $font_color_hover;
+  }
+}
+.rightIcon {
+  padding-right: 5px;
+  border-top-right-radius: $border_radius;
+  border-bottom-right-radius: $border_radius;
+  :hover {
+    color: $font_color_hover;
+  }
+}
+
+.leftIcon,
+.rightIcon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  justify-content: center;
+  min-width: 24px;
+  max-width: 24px;
+  color: $font_color;
+  font-size: 13px;
+}
+.keyword {
+  display: flex;
+  background: $background;
+  border-radius: $border_radius;
+  border: 1px solid lighten($font_color_hover, 15%);
+  width: max-content;
+  height: $height - 10;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 5px;
+  .remove {
+    color: $font_color_hover;
+    height: $height - 10;
+    padding: 0 5px;
+    font-size: 12px;
+    border-right: 1px solid lighten($font_color_hover, 15%);
+    &:hover {
+      background: darken($background, 10%);
+    }
+  }
+  .text {
+    margin: 0;
+    padding: 0 5px;
+    line-height: $height - 10;
+    color: $font_color_hover;
+  }
+}

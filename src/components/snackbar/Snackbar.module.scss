@@ -1,0 +1,38 @@
+@import 'scss/variables';
+
+.snackbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 9998;
+  cursor: pointer;
+  padding: 12px;
+  font-size: $snackbar_font_size;
+  border-radius: $snackbar_border_radius;
+  outline: none;
+  box-shadow: $box_shadow;
+  margin: 15px;
+  border: 1px solid $snackbar_color;
+  background: linear-gradient(
+    90deg,
+    lighten($snackbar_color, 5%) 0%,
+    $snackbar_color 100%
+  );
+  width: max-content;
+  color: $snackbar_font;
+  .icon {
+    margin-left: 16px;
+  }
+  &:hover {
+    background: darken($snackbar_color, 5%);
+  }
+  &:active {
+    background: darken($snackbar_color, 10%);
+  }
+}
+.snackbar:hover .icon {
+  color: #d9534f;
+}

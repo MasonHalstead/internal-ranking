@@ -1,0 +1,74 @@
+$primary_font_color:#fff;
+$primary_color: #8591e8;
+$secondary_font_color:#fff;
+$secondary_color: #8591e8;
+$border_radius: 3px;
+$font_size: 13px;
+$box_shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 8px 16px;
+  font-size: $font_size;
+  border-radius: $border_radius;
+  outline: none;
+  box-shadow: $box_shadow;
+  .leftIcon {
+    margin-right: 8px;
+  }
+  .rightIcon {
+    margin-left: 8px;
+  }
+}
+.primary {
+  color: $primary_font_color;
+  background: $primary_color;
+  background: linear-gradient(
+    90deg,
+    lighten($primary_color, 5%) 0%,
+    $primary_color 100%
+  );
+  border: 1px solid $primary_color;
+  &:hover {
+    background: darken($primary_color, 5%);
+  }
+  &:active {
+    background: darken($primary_color, 10%);
+  }
+}
+.secondary {
+  color: $secondary_font_color;
+  background: $secondary_color;
+  background: linear-gradient(
+    90deg,
+    lighten($secondary_color, 5%) 0%,
+    $secondary_color 100%
+  );
+  border: 1px solid $secondary_color;
+  &:hover {
+    background: darken($secondary_color, 5%);
+  }
+  &:active {
+    background: darken($secondary_color, 10%);
+  }
+}
+.slim {
+  padding: 0px 16px;
+  color: $primary_font_color;
+  background: $primary_color;
+  background: linear-gradient(
+    90deg,
+    lighten($primary_color, 5%) 0%,
+    $primary_color 100%
+  );
+  border: 1px solid $primary_color;
+  &:hover {
+    background: darken($primary_color, 5%);
+  }
+  &:active {
+    background: darken($primary_color, 10%);
+  }
+}

@@ -1,0 +1,65 @@
+.userModal {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  .userImage {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+.modalTitle {
+  padding: 15px;
+  color: #404b69;
+}
+.modalError {
+  margin: 0px;
+  padding: 15px;
+  padding-top: 0px;
+}
+.subTitle {
+  font-size: 14px;
+  font-weight: 400;
+  color: #787878;
+}
+.actionContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0px;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  color: #404b69;
+  cursor: pointer;
+  p {
+    font-weight: 400;
+    margin: 10px;
+  }
+}
+.actions:hover {
+  color: lighten(#428bca, 10%);
+}
+.active {
+  color: #428bca;
+}
+.errorContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background: #707ee4;
+
+}
+.errorIcon {
+  font-size: 75px;
+  color: #fff;
+}
+.link {
+  margin: 15px 0px 0px 0px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  color: #707ee4;
+}
+.link:hover {
+  color: darken(#707ee4, 10%);
+}

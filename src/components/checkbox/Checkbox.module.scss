@@ -1,0 +1,32 @@
+$checkbox_height: 29px;
+$checkbox_color: #3e96ed;
+
+.checkboxContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  white-space: nowrap;
+  width: 100%;
+  min-height: $checkbox_height;
+  input {
+    cursor: pointer;
+    margin: 0;
+    margin-right: 10px;
+  }
+  .label {
+    font-weight: 400;
+    font-size: 13px;
+    color: #62738d;
+    margin: 0;
+  }
+  .active {
+      color: $checkbox_color
+  }
+}
+.checkboxContainer:hover .label {
+    color: lighten($checkbox_color, 10%);
+}

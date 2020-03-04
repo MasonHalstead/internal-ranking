@@ -1,0 +1,101 @@
+$font_color: #62738d;
+$border_color: lighten(#3e96ed,15%);
+$background: #fff;
+$background_hover: lighten(#cfd7e6,10);
+$background_active: lighten(#cfd7e6,10);
+$font_size: 13px;
+$border_radius: 2px;
+$box_shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12);
+
+.selectScroll {
+    position: absolute !important;
+    left: 0;
+    right: 0;
+    min-width: max-content !important;
+    max-width: 100%;
+    margin-top: -1px;
+    background: $background;
+    border-radius: $border_radius;
+    border: 1px solid $border_color;
+    z-index: 1;
+    box-shadow: $box_shadow;
+}
+
+.selectCalendar {
+  position: absolute !important;
+  left: 0;
+  right: 0;
+  max-width: 100%;
+  margin-top: -1px;
+  background: $background;
+  border-radius: $border_radius;
+  border: 1px solid $border_color;
+  z-index: 1;
+  box-shadow: $box_shadow;
+}
+
+.selectBulk {
+    margin-top: 0;
+    left: 0;
+    border-radius: 0px;
+}
+  .selectTitle {
+      color: $font_color;
+    font-weight: 400;
+    padding: 6px;
+    margin: 0px;
+  }
+  .selectWrapper {
+    min-width: 50px;
+    color: $font_color;
+    font-size: $font_size;
+    padding: 3px 0px;
+    .item {
+      margin: 0px;
+      padding: 6px 10px;
+      cursor: pointer;
+      overflow: hidden;
+      text-align: left;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      white-space: nowrap;
+      &:hover {
+            background: $background_hover;
+        }
+    }
+    .empty {
+      margin: 0px;
+      padding: 6px 10px;
+      overflow: hidden;
+      text-align: center;
+      text-overflow: ellipsis;
+      word-break: break-all;
+      white-space: nowrap;
+    }
+    .itemSelected {
+        background: darken($background_hover, 5%);
+    }
+    .itemActive {
+      background: $background_active;
+    }
+  }
+  
+  .extendedBreak {
+    margin: 3px 0px;
+    border-top: 1px solid $border_color;
+  }
+  .extended {
+    .item {
+        cursor: pointer;
+        padding: 6px 10px;
+        margin: 0px;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        white-space: nowrap;
+        &:hover {
+            background: $background_hover;
+        }
+    }
+  }
