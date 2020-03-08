@@ -33,7 +33,7 @@ class ConnectedUserLogin extends PureComponent {
   };
 
   handleSubmit = async () => {
-    const { setLoading, loginUser, handleApiError } = this.props;
+    const { setLoading, loginUser, setModal, handleApiError } = this.props;
     const { email_address, password } = this.state;
 
     const data = {
@@ -45,6 +45,7 @@ class ConnectedUserLogin extends PureComponent {
       await loginUser(data);
       this.handleModalClose();
     } catch (err) {
+      await setModal({ user_login: false });
       handleApiError(err);
     }
     setLoading(false);
@@ -88,7 +89,9 @@ class ConnectedUserLogin extends PureComponent {
           >
             Forgot Password?
           </p>
-          <Button margin="10px 0px 0px 0px">Account Login</Button>
+          <Button margin="10px 0px 0px 0px" onClick={this.handleSubmit}>
+            Account Login
+          </Button>
         </div>
       </Modal>
     );

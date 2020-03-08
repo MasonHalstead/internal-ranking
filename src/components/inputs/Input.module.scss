@@ -153,6 +153,9 @@ $height: 29px;
 .inputDisabled {
   background: $disabled_color;
 }
+.inputError {
+  border: 1px solid #d9534f;
+}
 .inputBulk {
   border: none;
   border-radius: 0;

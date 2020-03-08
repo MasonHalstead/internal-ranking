@@ -10,11 +10,7 @@ const persistedState = {
   user,
 };
 
-export const store = createStore(
-  rootReducer,
-  persistedState,
-  composeWithDevTools(applyMiddleware(thunk)),
-);
+export const store = createStore(rootReducer, persistedState, composeWithDevTools(applyMiddleware(thunk)));
 
 store.subscribe(() => {
   const updatedUser = selectUser(store.getState());

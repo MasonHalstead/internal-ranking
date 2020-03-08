@@ -4,8 +4,9 @@ export const routes = {
   REGISTER: '/register',
   EMAIL_VERIFY: '/email/:verify',
   PASSWORD: '/password',
+  PROFILE: '/profile',
   SANDBOX: '/sandbox',
-  GAMES: '/asdasd',
-  MATCHES: '/asdasd',
-  RANKINGS: '/asdasd',
+  GAMES: '/games',
+  MATCHES: '/matches',
+  RANKINGS: '/ranking',
 };

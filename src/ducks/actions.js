@@ -24,9 +24,13 @@ export const setModal = modal => ({
 });
 
 // ------ SETTINGS ACTIONS ------ //
-export const setErrorMessage = message => ({
+export const setErrorMessage = error_message => ({
   type: constants.SET_ERROR_MESSAGE,
-  payload: message,
+  payload: error_message,
+});
+export const setStatusMessage = status_message => ({
+  type: constants.SET_STATUS_MESSAGE,
+  payload: status_message,
 });
 export const setLoading = loading => ({
   type: constants.SET_LOADING,

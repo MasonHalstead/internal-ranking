@@ -18,6 +18,7 @@ export class Input extends Component {
     disabled: PropTypes.bool,
     value: PropTypes.any,
     bulk: PropTypes.bool,
+    error: PropTypes.bool,
     margin: PropTypes.string,
     flexGrow: PropTypes.number,
     background: PropTypes.string,
@@ -37,6 +38,7 @@ export class Input extends Component {
     placeholder: '',
     dropdown: false,
     dropdown_focus: false,
+    error: false,
     disabled: false,
     left_icon: false,
     right_icon: false,
@@ -95,6 +97,7 @@ export class Input extends Component {
       left_icon,
       right_icon,
       bulk,
+      error,
       margin,
       background,
       width,
@@ -108,16 +111,14 @@ export class Input extends Component {
       focus = dropdown_focus;
     }
     return (
-      <div
-        className={cn.container}
-        style={{ margin, maxWidth: width, width, background, flexGrow }}
-      >
+      <div className={cn.container} style={{ margin, maxWidth: width, width, background, flexGrow }}>
         {label && <p className={cn.label}>{label}</p>}
         <div
           className={classNames(cn.inputContainer, {
             [cn.inputBulk]: bulk,
             [cn.inputDisabled]: disabled,
             [cn.inputFocus]: focus,
+            [cn.inputError]: error,
           })}
         >
           {left_icon && (

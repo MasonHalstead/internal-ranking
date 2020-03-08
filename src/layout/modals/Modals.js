@@ -4,7 +4,7 @@ import { ApiError } from './ApiError';
 import { UserLogin } from './UserLogin';
 import { UserReset } from './UserReset';
 import { UserRegister } from './UserRegister';
-import { UserSettings } from './UserSettings';
+import { UserUpdate } from './UserUpdate';
 
 export class Modals extends React.PureComponent {
   static propTypes = {
@@ -25,7 +25,7 @@ export class Modals extends React.PureComponent {
         <UserLogin />
         {private_modals && (
           <>
-            <UserSettings />
+            <UserUpdate />
           </>
         )}
       </>

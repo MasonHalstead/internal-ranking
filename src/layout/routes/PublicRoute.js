@@ -24,7 +24,7 @@ class ConnectedPublicRoute extends PureComponent {
           render={props => (
             <Redirect
               to={{
-                pathname: routes.GAMES,
+                pathname: routes.PROFILE,
                 state: {
                   from: props.location,
                 },

@@ -11,6 +11,7 @@ class ConnectedApiError extends PureComponent {
     setModal: PropTypes.func,
     setErrorMessage: PropTypes.func,
     api_error: PropTypes.bool,
+    status_message: PropTypes.string,
     error_message: PropTypes.string,
   };
 
@@ -21,7 +22,7 @@ class ConnectedApiError extends PureComponent {
   };
 
   render() {
-    const { api_error, error_message } = this.props;
+    const { api_error, status_message, error_message } = this.props;
 
     return (
       <Modal show={api_error} variant="secondary" handleClose={this.handleClose}>
@@ -30,7 +31,8 @@ class ConnectedApiError extends PureComponent {
             <FontAwesomeIcon className={cn.errorIcon} icon="exclamation-triangle" />
           </div>
           <h3 className={cn.modalTitle}>API Error</h3>
-          <p className={cn.modalError}>{error_message}</p>
+          {status_message && <p className={cn.modalError}>{status_message}</p>}
+          {error_message && <p className={cn.modalError}>{error_message}</p>}
         </div>
       </Modal>
     );
@@ -39,6 +41,7 @@ class ConnectedApiError extends PureComponent {
 
 const mapStateToProps = state => ({
   error_message: state.settings.error_message,
+  status_message: state.settings.status_message,
   api_error: state.modals.api_error,
 });
 

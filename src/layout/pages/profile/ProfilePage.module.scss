@@ -1,0 +1,40 @@
+@import 'scss/variables';
+
+.page {
+    display: flex;
+    max-width: 100%;
+}
+.profile {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    max-width: 100%;
+    width: 540px;
+    border: 1px solid #bbc9f9;
+    box-shadow: $box_shadow;
+}
+.top {
+    display: flex;
+    flex-grow: 1;
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 15px;
+    flex-grow: 1;
+}
+.bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+.logo {
+    cursor: pointer;
+    color: #a1aabf;
+}
+.flex {
+    flex-grow: 1;
+}

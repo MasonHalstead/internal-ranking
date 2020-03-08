@@ -1,8 +1,9 @@
 import React, { PureComponent, Suspense } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Loading } from 'components/loading/Loading';
 import { routes } from 'layout/routes/routes';
+import { PrivateRoute } from 'layout/routes/PrivateRoute';
 import { PublicRoute } from 'layout/routes/PublicRoute';
 import * as Sentry from '@sentry/browser';
 import * as pages from 'layout/pages/async';
@@ -25,12 +26,8 @@ class ConnectedApp extends PureComponent {
       <Router basename="/">
         <Suspense fallback={<Loading variant="dark" />}>
           <Switch>
-            {/* <Redirect exact from={routes.ROOT} to={routes.VALIDATE} /> */}
             <PublicRoute exact path={routes.ROOT} component={pages.RootPage} />
-            <PublicRoute exact path={routes.LOGIN} variant="secondary" component={pages.LoginPage} />
-            <PublicRoute exact path={routes.PASSWORD} variant="secondary" component={pages.PasswordPage} />
-            <PublicRoute exact path={routes.EMAIL_VERIFY} variant="secondary" component={pages.EmailPage} />
-            <PublicRoute exact path={routes.REGISTER} component={pages.RegisterPage} />
+            <PrivateRoute exact path={routes.PROFILE} component={pages.ProfilePage} />
             <Route component={pages.ErrorPage} />
           </Switch>
         </Suspense>

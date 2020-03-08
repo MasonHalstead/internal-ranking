@@ -3,7 +3,7 @@ import { isObject } from 'utils/helpers';
 
 const { REACT_APP_HOST } = process.env;
 
-export function postPublic(url, data) {
+export function postPublicData(url, data) {
   return axios({
     method: 'post',
     url: `${REACT_APP_HOST}${url}`,
@@ -11,7 +11,7 @@ export function postPublic(url, data) {
     headers: { 'Content-Type': 'application/json' },
   });
 }
-export function getPublic(url) {
+export function getPublicData(url) {
   return axios({
     method: 'get',
     url: `${REACT_APP_HOST}${url}`,

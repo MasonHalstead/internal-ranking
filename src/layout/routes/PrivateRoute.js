@@ -10,14 +10,13 @@ class PrivateRouteWrapper extends PureComponent {
   static propTypes = {
     privateUser: PropTypes.bool,
     component: PropTypes.object,
-    variant: PropTypes.string,
     layout: PropTypes.any,
     location: PropTypes.object,
   };
 
   render() {
-    const { component: Component, privateUser, variant, location, ...rest } = this.props;
-    if (privateUser) {
+    const { component: Component, privateUser, location, ...rest } = this.props;
+    if (!privateUser) {
       return (
         <Route
           key={location.pathname}
@@ -40,7 +39,7 @@ class PrivateRouteWrapper extends PureComponent {
         key={location.pathname}
         {...rest}
         render={props => (
-          <PrivateLayout variant={variant}>
+          <PrivateLayout>
             <Component {...props} />
           </PrivateLayout>
         )}

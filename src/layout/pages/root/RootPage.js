@@ -2,55 +2,77 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { handleApiError as handleApiErrorProps } from 'ducks/operators/settings';
-import {
-  loginUser as loginUserAction,
-  setLoading as setLoadingAction,
-  setModal as setModalAction,
-} from 'ducks/actions';
+import { setModal as setModalAction } from 'ducks/actions';
+import { registerUser as registerUserProps } from 'ducks/operators/user';
 import { Input } from 'components/inputs/Input';
 import { Button } from 'components/buttons/Button';
-import { postPublic } from 'utils/axios';
 import cn from './RootPage.module.scss';
 const { PUBLIC_URL } = process.env;
 
 export class RootPage extends Component {
   static propTypes = {
-    loginUser: PropTypes.func,
-    setLoading: PropTypes.func,
+    registerUser: PropTypes.func,
     setModal: PropTypes.func,
     handleApiError: PropTypes.func,
   };
 
   state = {
     email_address: '',
+    email_valid: true,
+    password_valid: true,
     confirm_password: '',
     password: '',
   };
 
   handlePassword = input => {
-    this.setState({ password: input.value });
+    this.setState({ password: input.value }, () => this.passwordValidation());
   };
 
   handleConfirmPassword = input => {
-    this.setState({ confirm_password: input.value });
+    this.setState({ confirm_password: input.value }, () => this.passwordValidation());
   };
 
   handleEmailAddress = input => {
-    this.setState({ email_address: input.value });
+    this.setState({ email_address: input.value, email_valid: this.emailValidation(input.value) });
+  };
+
+  emailValidation = email_address => {
+    if (email_address.length > 0) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email_address);
+    }
+    return true;
+  };
+
+  passwordValidation = () => {
+    const { password, confirm_password } = this.state;
+    if (password.length === 0 && confirm_password.length === 0) {
+      return this.setState({ password_valid: true });
+    }
+    if (password === confirm_password) {
+      return this.setState({ password_valid: true });
+    }
+    return this.setState({ password_valid: false });
   };
 
   handleSubmit = async () => {
-    const { setLoading, handleApiError, loginUser } = this.props;
-    const { email_address, confirm_password, password } = this.state;
+    const { handleApiError, registerUser } = this.props;
+    const { email_address, email_valid, password_valid, password } = this.state;
     const data = {
       email_address,
-      confirm_password,
       password,
+      read_terms: false,
     };
     try {
-      const res = await postPublic('/users/login', data);
-      await setLoading(false);
-      loginUser(res.data);
+      if (!email_valid) {
+        throw Error('Email Address must be valid');
+      }
+      if (!password_valid) {
+        throw Error('Confirm Password must match Password');
+      }
+      if (data.password.length < 5) {
+        throw Error('Password must be at least 5 characters');
+      }
+      await registerUser(data);
     } catch (err) {
       handleApiError(err, data);
     }
@@ -58,7 +80,7 @@ export class RootPage extends Component {
 
   render() {
     const { setModal } = this.props;
-    const { email_address, confirm_password, password } = this.state;
+    const { email_address, email_valid, confirm_password, password_valid, password } = this.state;
     const year = new Date().getFullYear();
     return (
       <div className={cn.page}>
@@ -74,6 +96,7 @@ export class RootPage extends Component {
               label="Email Address"
               margin="5px 0px"
               value={email_address}
+              error={!email_valid}
               handleOnChange={this.handleEmailAddress}
             />
             <Input
@@ -88,6 +111,7 @@ export class RootPage extends Component {
               type="password"
               margin="5px 0px 30px 0px"
               value={confirm_password}
+              error={!password_valid}
               handleOnChange={this.handleConfirmPassword}
             />
             <Button onClick={this.handleSubmit} variant="secondary">
@@ -96,7 +120,7 @@ export class RootPage extends Component {
             <div className={cn.flex} />
             <p className={cn.action}>
               Already have an account?{' '}
-              <a onClick={() => setModal({ user_login: true })} role="presentation">
+              <a className={cn.link} onClick={() => setModal({ user_login: true })} role="presentation">
                 Login
               </a>
             </p>
@@ -210,9 +234,8 @@ export class RootPage extends Component {
 }
 
 const mapDispatchToProps = {
-  loginUser: loginUserAction,
+  registerUser: registerUserProps,
   setModal: setModalAction,
-  setLoading: setLoadingAction,
   handleApiError: handleApiErrorProps,
 };
 

@@ -12,7 +12,7 @@ const { PUBLIC_URL } = process.env;
 
 class ConnectedUserRegister extends PureComponent {
   static propTypes = {
-    closeModal: PropTypes.func,
+    setModal: PropTypes.func,
     handleApiError: PropTypes.func,
     setLoading: PropTypes.func,
     registerUser: PropTypes.func,
@@ -26,6 +26,8 @@ class ConnectedUserRegister extends PureComponent {
     organization_code: '',
     password: '',
     confirm_password: '',
+    email_valid: true,
+    password_valid: true,
   };
 
   handleFirstName = input => {
@@ -36,24 +38,42 @@ class ConnectedUserRegister extends PureComponent {
     this.setState({ last_name: input.value });
   };
 
-  handleEmailAddress = input => {
-    this.setState({ email_address: input.value });
-  };
-
   handleOrganizationCode = input => {
     this.setState({ organization_code: input.value });
   };
 
-  handleConfirmPassword = input => {
-    this.setState({ confirm_password: input.value });
+  handlePassword = input => {
+    this.setState({ password: input.value }, () => this.passwordValidation());
   };
 
-  handlePassword = input => {
-    this.setState({ password: input.value });
+  handleConfirmPassword = input => {
+    this.setState({ confirm_password: input.value }, () => this.passwordValidation());
+  };
+
+  handleEmailAddress = input => {
+    this.setState({ email_address: input.value, email_valid: this.emailValidation(input.value) });
+  };
+
+  emailValidation = email_address => {
+    if (email_address.length > 0) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email_address);
+    }
+    return true;
+  };
+
+  passwordValidation = () => {
+    const { password, confirm_password } = this.state;
+    if (password.length === 0 && confirm_password.length === 0) {
+      return this.setState({ password_valid: true });
+    }
+    if (password === confirm_password) {
+      return this.setState({ password_valid: true });
+    }
+    return this.setState({ password_valid: false });
   };
 
   handleSubmit = async () => {
-    const { setLoading, registerUser, handleApiError } = this.props;
+    const { setLoading, registerUser, setModal, handleApiError } = this.props;
     const {
       first_name,
       last_name,
@@ -61,6 +81,8 @@ class ConnectedUserRegister extends PureComponent {
       organization_code,
       password,
       confirm_password,
+      password_valid,
+      email_valid,
     } = this.state;
 
     const data = {
@@ -72,16 +94,26 @@ class ConnectedUserRegister extends PureComponent {
       confirm_password,
     };
     try {
+      if (!email_valid) {
+        throw Error('Email Address must be valid');
+      }
+      if (!password_valid) {
+        throw Error('Confirm Password must match Password');
+      }
+      if (data.password.length < 5) {
+        throw Error('Password must be at least 5 characters');
+      }
       await registerUser(data);
       this.handleModalClose();
     } catch (err) {
+      await setModal({ user_register: false });
       handleApiError(err);
     }
     setLoading(false);
   };
 
   handleModalClose = () => {
-    const { closeModal } = this.props;
+    const { setModal } = this.props;
     this.setState({
       first_name: '',
       last_name: '',
@@ -90,7 +122,7 @@ class ConnectedUserRegister extends PureComponent {
       password: '',
       confirm_password: '',
     });
-    closeModal({ user_register: false });
+    setModal({ user_register: false });
   };
 
   render() {
@@ -101,6 +133,8 @@ class ConnectedUserRegister extends PureComponent {
       email_address,
       organization_code,
       confirm_password,
+      email_valid,
+      password_valid,
       password,
     } = this.state;
     return (
@@ -128,6 +162,7 @@ class ConnectedUserRegister extends PureComponent {
             label="Email Address"
             value={email_address}
             margin="10px 0px 0px 0px"
+            error={!email_valid}
             handleOnChange={this.handleEmailAddress}
           />
           <Input
@@ -148,9 +183,12 @@ class ConnectedUserRegister extends PureComponent {
             type="password"
             value={confirm_password}
             margin="10px 0px 0px 0px"
+            error={!password_valid}
             handleOnChange={this.handleConfirmPassword}
           />
-          <Button margin="20px 0px 0px 0px">Register Account</Button>
+          <Button margin="20px 0px 0px 0px" onClick={this.handleSubmit}>
+            Register Account
+          </Button>
         </div>
       </Modal>
     );
@@ -163,7 +201,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   handleApiError: handleApiErrorProps,
-  closeModal: setModalAction,
+  setModal: setModalAction,
   registerUser: registerUserProps,
   setLoading: setLoadingAction,
 };
