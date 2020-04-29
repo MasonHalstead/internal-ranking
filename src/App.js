@@ -28,6 +28,7 @@ class ConnectedApp extends PureComponent {
           <Switch>
             <PublicRoute exact path={routes.ROOT} component={pages.RootPage} />
             <PrivateRoute exact path={routes.PROFILE} component={pages.ProfilePage} />
+            <PrivateRoute exact path={routes.ORGANIZATION} component={pages.OrganizationPage} />
             <Route component={pages.ErrorPage} />
           </Switch>
         </Suspense>

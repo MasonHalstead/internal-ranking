@@ -10,17 +10,26 @@ export const Menu = React.memo(({ pathname }) => (
   <div className={cn.menuContainer}>
     <img className={cn.logo} src={`${PUBLIC_URL}/logo.svg`} alt="Internal Ranking Logo" width={50} />
     <Link to="/profile" className={cn.iconWrapper}>
-      <FontAwesomeIcon icon="building" />
+      <FontAwesomeIcon icon="dice-d6" />
+      <Tooltip title="Dashboard" />
     </Link>
     <Link to="/profile" className={cn.iconWrapper}>
-      <FontAwesomeIcon icon="users" />
+      <FontAwesomeIcon icon="stream" />
+      <Tooltip title="Rankings" />
     </Link>
     <Link to="/profile" className={cn.iconWrapper}>
-      <FontAwesomeIcon icon="user-friends" />
+      <FontAwesomeIcon icon="star" />
+      <Tooltip title="Competitions" />
+    </Link>
+    <Link to="/profile" className={cn.iconWrapper}>
+      <FontAwesomeIcon icon="flag-checkered" />
+      <Tooltip title="Matches" />
     </Link>
     <Link to="/profile" className={cn.iconWrapper}>
       <FontAwesomeIcon icon="gamepad" />
+      <Tooltip title="Games" />
     </Link>
+    <div className={cn.flex} />
   </div>
 ));
 Menu.defaultProps = {

@@ -146,6 +146,32 @@ export class ProfilePage extends PureComponent {
             ))}
           </div>
         </div>
+        <div className={cn.match}>
+          <img
+            className={cn.logo}
+            src={`${PUBLIC_URL}/matches.svg`}
+            alt="Internal Ranking Matches"
+            role="presentation"
+            width={240}
+          />
+          <div className={cn.flex} />
+          <Button margin="20px 0px 0px 0px" onClick={this.handleSubmit}>
+            Submit Match
+          </Button>
+        </div>
+        <div className={cn.competition}>
+          <img
+            className={cn.logo}
+            src={`${PUBLIC_URL}/competition.svg`}
+            alt="Internal Ranking Matches"
+            role="presentation"
+            width={240}
+          />
+          <div className={cn.flex} />
+          <Button margin="20px 0px 0px 0px" onClick={this.handleSubmit}>
+            Create Competition
+          </Button>
+        </div>
       </div>
     );
   }

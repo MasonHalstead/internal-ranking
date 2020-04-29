@@ -12,7 +12,7 @@ export const getUser = () => async dispatch => {
   await dispatch(setLoading(true));
   await dispatch(getUserToken());
   const res = await getData(`/users/me`);
-  await dispatch(setUser({ ...res.data }));
+  await dispatch(setUser({ ...res.data, user_id: res.data._id }));
   return res.data;
 };
 

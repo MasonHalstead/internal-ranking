@@ -26,6 +26,7 @@ module.exports = {
     'arrow-body-style': [2, 'as-needed'],
     'class-methods-use-this': 0,
     'comma-dangle': [2, 'always-multiline'],
+    'no-underscore-dangle': 0,
     'max-len': 0,
     'require-yield': 0,
     'camelcase': 0,

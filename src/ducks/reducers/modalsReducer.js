@@ -5,6 +5,7 @@ const modalsState = {
   user_settings: false,
   user_login: false,
   user_update: false,
+  user_organization: false,
 };
 export const modalsReducer = (state = modalsState, action) => {
   switch (action.type) {

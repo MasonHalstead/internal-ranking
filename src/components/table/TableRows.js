@@ -15,13 +15,11 @@ export class ConnectedTableRows extends PureComponent {
     platforms: PropTypes.array,
     location: PropTypes.object,
     frequency_list: PropTypes.array,
-    state_classes: PropTypes.object,
     row_component: PropTypes.any,
     cell_components: PropTypes.array,
   };
 
   static defaultProps = {
-    state_classes: {},
     states: [],
     platforms: [],
     frequency_list: [],
@@ -61,9 +59,7 @@ export class ConnectedTableRows extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  state_classes: state.lookups.state_classes,
+  state_classes: [],
 });
 
-export const TableRows = withRouter(
-  connect(mapStateToProps)(ConnectedTableRows),
-);
+export const TableRows = withRouter(connect(mapStateToProps)(ConnectedTableRows));

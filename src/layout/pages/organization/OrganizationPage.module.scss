@@ -1,0 +1,69 @@
+@import 'scss/variables';
+
+.page {
+    display: flex;
+    max-width: 100%;
+}
+.page > .left {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    margin-right: 25px;
+    flex-grow: 1;
+    border: 1px solid #bbc9f9;
+    box-shadow: $box_shadow;
+}
+.page > .right {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-grow: 1;
+    max-width: 360px;
+    background: #fff;
+    border-radius: 4px;
+    padding-top: 10px;
+    flex-grow: 1;
+    border: 1px solid #bbc9f9;
+    box-shadow: $box_shadow;
+}
+.inputs {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 0px 15px;
+    flex-grow: 1;
+}
+.metrics {
+    display: flex;
+    border-top: 1px solid pink;
+    width: 100%;
+    margin-top: 20px;
+    .left {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        border-right: 1px solid pink;
+        flex-grow: 1;
+        padding: 10px 0px;
+        p {
+            margin: 5px 0px;
+        }
+    }
+    .right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        flex-grow: 1;
+        padding: 10px 0px;
+        p {
+            margin: 5px 0px;
+        }
+    }
+}
+.flex {
+    flex-grow: 1;
+}

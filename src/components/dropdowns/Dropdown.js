@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import { InputFake } from 'components/inputs/InputFake';
 import { DropdownContainer } from './DropdownContainer';
 
-const Dropdown = ({
+export const Dropdown = ({
   rows,
   label,
   left_icon,
@@ -117,5 +117,3 @@ Dropdown.propTypes = {
   handleOnSelect: PropTypes.func,
   selected_index: PropTypes.number,
 };
-
-export default Dropdown;
